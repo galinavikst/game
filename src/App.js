@@ -25,7 +25,9 @@ const options = ["paper", "scissors", "grab"];
 let isShowingResult;
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [userScore, setUserScore] = useState(0);
+  const [compScore, setCompScore] = useState(0);
+  const [totalGames, setTotalGames] = useState(0);
   const [result, setResult] = useState(false);
   const [userChoise, setUserchoise] = useState(null);
   const [compChoise, setCompChoise] = useState(null);
@@ -43,6 +45,7 @@ export default function App() {
 
     setUserchoise(event.target.src);
     setCompChoise(compImg.src);
+    setTotalGames(totalGames + 1);
 
     setResult(true);
     isShowingResult = true;
@@ -52,13 +55,20 @@ export default function App() {
     }, 1500);
 
     if (values[user][computer] === 1) {
-      setCount(count + 1);
+      setUserScore(userScore + 1);
+    } else if (values[user][computer] === -1) {
+      setCompScore(compScore + 1);
     }
   };
 
   return (
     <div className="container">
-      <p className="count">Your score: {count}</p>
+      <div className="score_comtaner">
+        <p className="count">
+          You {userScore} : {compScore} Computer
+        </p>
+        <p>Total games: {totalGames}</p>
+      </div>
       <div className="img_container">
         <div className="img_block">
           <img

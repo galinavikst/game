@@ -45,6 +45,14 @@
   align-items: center;
   border: 2px solid #7b7979;
   border-radius: 5px;
+  transition: all 100ms ease-in-out;
+}
+
+.img_block:hover,
+.img_block:focus {
+  cursor: pointer;
+  scale: 1.05;
+  box-shadow: 0 8px 6px -6px #7b7979;
 }
 
 .big_icon {
