@@ -1,4 +1,4 @@
-# Scissors Paper Stone game
+# Rock paper scissors game
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
