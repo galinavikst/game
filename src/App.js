@@ -32,6 +32,12 @@ export default function App() {
   const [userChoise, setUserchoise] = useState(null);
   const [compChoise, setCompChoise] = useState(null);
 
+  const reset = () => {
+    setCompScore(0);
+    setUserScore(0);
+    setTotalGames(0);
+  };
+
   const play = (event) => {
     if (isShowingResult) {
       console.log("too fast");
@@ -47,18 +53,18 @@ export default function App() {
     setCompChoise(compImg.src);
     setTotalGames(totalGames + 1);
 
+    if (values[user][computer] === 1) {
+      setUserScore(userScore + 1);
+    } else if (values[user][computer] === -1) {
+      setCompScore(compScore + 1);
+    }
+
     setResult(true);
     isShowingResult = true;
     setTimeout(() => {
       isShowingResult = false;
       setResult(false);
     }, 1500);
-
-    if (values[user][computer] === 1) {
-      setUserScore(userScore + 1);
-    } else if (values[user][computer] === -1) {
-      setCompScore(compScore + 1);
-    }
   };
 
   return (
@@ -100,44 +106,53 @@ export default function App() {
         {result && (
           <div className="result_container">
             <div>
-              <p>Computer:</p>
-              <img className="small_icon" src={compChoise} alt="hand" />
+              <p>You:</p>
+              <img className="small_icon" src={userChoise} alt="hand" />
             </div>
             <div>
-              <p>User:</p>
-              <img className="small_icon" src={userChoise} alt="hand" />
+              <p>Computer:</p>
+              <img className="small_icon" src={compChoise} alt="hand" />
             </div>
           </div>
         )}
       </div>
+      <BottomBlock reset={reset} />
+    </div>
+  );
+}
+
+function BottomBlock(props) {
+  return (
+    <div className="bottom_container">
       <Rules />
+      <button onClick={props.reset} className="reset_btn">
+        Reset score
+      </button>
     </div>
   );
 }
 
 function Rules() {
   return (
-    <div>
-      <div className="rules_container">
-        <p className="rules">Rules of the game</p>
-        <ul className="rules_list">
-          <li className="rules_block">
-            <img className="small_icon" src={openHand} alt="hand" />
-            <span>{"<"}</span>
-            <img className="small_icon" src={scissorsHand} alt="hand" />
-          </li>
-          <li className="rules_block">
-            <img className="small_icon" src={grabbingHand} alt="hand" />
-            <span>{">"}</span>
-            <img className="small_icon" src={scissorsHand} alt="hand" />
-          </li>
-          <li className="rules_block">
-            <img className="small_icon" src={grabbingHand} alt="hand" />
-            <span>{"<"}</span>
-            <img className="small_icon" src={openHand} alt="hand" />
-          </li>
-        </ul>
-      </div>
+    <div className="rules_container">
+      <p className="rules">Rules of the game</p>
+      <ul className="rules_list">
+        <li className="rules_block">
+          <img className="small_icon" src={openHand} alt="hand" />
+          <span>{"<"}</span>
+          <img className="small_icon" src={scissorsHand} alt="hand" />
+        </li>
+        <li className="rules_block">
+          <img className="small_icon" src={grabbingHand} alt="hand" />
+          <span>{">"}</span>
+          <img className="small_icon" src={scissorsHand} alt="hand" />
+        </li>
+        <li className="rules_block">
+          <img className="small_icon" src={grabbingHand} alt="hand" />
+          <span>{"<"}</span>
+          <img className="small_icon" src={openHand} alt="hand" />
+        </li>
+      </ul>
     </div>
   );
 }
