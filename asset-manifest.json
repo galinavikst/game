@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/game/static/css/main.b08675a1.css",
+    "main.js": "/game/static/js/main.4d38b0f2.js",
+    "static/media/hand-scissors.svg": "/game/static/media/hand-scissors.6fed9153bc565b72617d458c2a577477.svg",
+    "static/media/open-hand.svg": "/game/static/media/open-hand.664d50402d399f6a84e6d010a24c5cd6.svg",
+    "static/media/hand-grabbing.svg": "/game/static/media/hand-grabbing.ad23e33f95f6ca0f6b1a9fde725e0356.svg",
+    "index.html": "/game/index.html",
+    "main.b08675a1.css.map": "/game/static/css/main.b08675a1.css.map",
+    "main.4d38b0f2.js.map": "/game/static/js/main.4d38b0f2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b08675a1.css",
+    "static/js/main.4d38b0f2.js"
+  ]
+}
